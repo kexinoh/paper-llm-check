@@ -16,6 +16,6 @@ This project provides some checks on the formatting of a paper, such as detectin
 ### arXiv引用验证
 1. 从eprint字段或arxiv.org/abs/URL提取arXiv ID
 2. 通过arXiv API获取论文元数据
-3. 比对本地标题与API标题相似度（阈值80%）
+3. 比对本地标题与API标题相似度（阈值95%）
 4. 支持@article和@misc条目类型
 5. 自动跳过非.bib文件
