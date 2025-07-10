@@ -15,6 +15,10 @@ class BaseCheck(ABC):
     def get_report_header(self) -> str:
         """生成检测报告标题"""
 
+    def finalize(self) -> list[str]:
+        """可选的收尾处理, 默认无额外结果"""
+        return []
+
 class FileScanner:
     """文件扫描器，负责遍历目录和文件"""
     def __init__(self, root_path: str):
