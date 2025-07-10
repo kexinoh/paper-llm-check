@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Iterator
+from .utils import get_ordered_tex_files
 from pluggy import HookspecMarker
 
 class BaseCheck(ABC):
@@ -20,8 +21,10 @@ class FileScanner:
         self.root_path = Path(root_path)
 
     def scan_files(self) -> Iterator[Path]:
-        """生成器方法，遍历所有.tex文件"""
-        return self.root_path.glob('**/*.tex')
+        """生成器方法，按顺序遍历所有.tex文件"""
+        ordered = get_ordered_tex_files(str(self.root_path))
+        for path in ordered:
+            yield path
 
 # 插件系统挂钩规范
 hookspec = HookspecMarker('paper_check')
